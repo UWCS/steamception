@@ -15,6 +15,8 @@
 
 	function getSteamGames($name)
 	{
+		$HEAD_URL = 'http://altru.istic.net/steamcommon/steam.php?u=';
+/*
 		$HEAD_URL = 'http://steamcommunity.com/';
 		if(preg_match('/[0-9]{17}/', $name))
 		{
@@ -25,6 +27,7 @@
 			$MID_URL = 'id/';
 		}
 		$TAIL_URL = '/games?tab=all&xml=1';
+*/
 		$xml = simplexml_load_file($HEAD_URL.$MID_URL.$name.$TAIL_URL) or die('Error loading XML data.');
 
 		foreach($xml->games->game as $game)
