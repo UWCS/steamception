@@ -27,6 +27,7 @@ doAddPerson = function(){
 		} else {
 			$('#errors').append('Empty!<br />');
 		}
+		$('#addperson').attr('value', '')
 		return false;
 }
 
@@ -43,7 +44,7 @@ $(document).ready(function()
 <form id="addform">
 	<input id="addperson" type="text"/>
 	<a href="#" id="addbutton">
-		<img src="http://imperial.istic.net/static/icons/silk/add.png">
+		<img src="images/add.png">
 	</a>
 </form>
 
