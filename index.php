@@ -51,7 +51,7 @@ doAddPerson = function(){
 getGames = function(link){
 	$('#results').html('');
 	fetchPath = 'query.php?names='+link;
-	$.getJSON(fetchPath, function(data) {
+	var jqxhr = $.getJSON(fetchPath, function(data) {
 		console.log(data);
 		$.each(data, function(key, val){
 			linkBase = 'http://store.steampowered.com/app/';
@@ -72,6 +72,10 @@ getGames = function(link){
 				</div>\
 			');
 		});
+	}).error(function(jqXHR, textStatus, errorThrown) {
+		$('#errors').append('There was a problem, try again!<br />');
+		console.log("error " + textStatus);
+		console.log("incoming Text " + jqXHR.responseText);
 	});
 	return false;
 }
