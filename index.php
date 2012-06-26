@@ -8,7 +8,7 @@
 people = [];
 function updateLink(){
 	if (people.length > 1){
-		link = 'query.php?'+people.join(',');
+		link = 'query.php?names='+people.join(',');
 		$('#compare').html('Compare!');
 		$('#compare').attr('href', link);
 	}
