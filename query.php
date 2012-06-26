@@ -6,9 +6,11 @@
 		{
 			$user[$value] = getSteamProfile($value);
 		}
-	}
 
-	print_r($user);
+		$intersection = call_user_func_array(array_intersect, $user);
+
+		print_r($intersection);
+	}
 
 	function getSteamProfile($name)
 	{
