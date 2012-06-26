@@ -49,6 +49,7 @@ doAddPerson = function(){
 }
 
 getGames = function(link){
+	$('#results').html('');
 	fetchPath = 'query.php?names='+link;
 	$.getJSON(fetchPath, function(data) {
 		console.log(data);
