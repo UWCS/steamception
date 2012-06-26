@@ -28,7 +28,10 @@
 
 	function generateXML($intersection)
 	{
-		$out = new SimpleXMLElement('<xml/>');
+		header('content-type: text/xml');
+
+		$out = new SimpleXMLElement('<gamelist/>');
+		$out->addAttribute('count',count($intersection));
 
 		foreach($intersection as $key=>$value)
 		{
