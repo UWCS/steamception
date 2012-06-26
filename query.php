@@ -9,7 +9,7 @@
 
 		$intersection = call_user_func_array(array_intersect, $user);
 
-		print_r($intersection);
+		generateXML($intersection);
 	}
 
 	function getSteamProfile($name)
@@ -24,4 +24,18 @@
 		}
 
 		return $games;
+	}
+
+	function generateXML($intersection)
+	{
+		$out = new SimpleXMLElement('<xml/>');
+
+		foreach($intersection as $key=>$value)
+		{
+			$game = $out->addChild('game');
+			$game->addChild('name', $value);
+			$game->addChild('id', $key);
+		}
+
+		print($out->asXML());
 	}
