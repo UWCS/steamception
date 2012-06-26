@@ -1,4 +1,309 @@
+/*** Basic Setup ***/
+
+/* Reset everything to give us a chance of a clean start in all browsers */
+
+html, body, p, ul, ol, li, form, fieldset, blockquote, h1, h2, h3, h4, h5, h6, img {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-size: 1em;
+	list-style: none;
+	border: 0;
+}
+
 #errors
 {
 	color: red;
 }
+
+/* Set some defaults */
+
+body {
+	font-size: 0.85em;
+	font-family:"Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+}
+
+p {
+	line-height: 1.5em;
+}
+
+/*** Layout ***/
+
+body, html {
+	height: 100%;
+} 
+
+body {
+	margin: 0 auto;
+	min-width: 980px;
+	max-width: 1200px;
+	text-align: left;
+}
+
+html {
+	text-align: center;
+}
+
+#container {
+    min-height: 100%;
+    margin-bottom: -40px;
+}
+
+/* IE6 Hack for min-height */
+* html #container {
+    height: 100%;
+}
+
+/* Footer */
+
+#footer-spacer {
+	padding-top: 20px;
+	height: 40px;
+	clear: both;
+}
+
+#footer {
+	height: 29px;
+	font-size: 0.8em;
+	text-align: right;
+	padding: 5px;
+}
+
+/* Header */
+
+#header {
+	width: 100%;
+	padding-top: 20px;
+	height: 140px;
+}
+
+#logo {
+	padding-left: 30px;
+}
+
+#logo img {
+	vertical-align: top;
+}
+
+#logo h1 {
+	display: inline;
+}
+
+/* Top right box */
+
+#top-right {
+	float: right;
+	padding-right: 30px;
+	text-align: right;
+}
+
+/* Search box */
+#top-right input {
+	width: 170px;
+	margin-top: 10px;
+	padding-left: 20px;
+}
+
+/* Menu */
+
+#menu {
+	margin-top: -20px;
+	float: right;
+	padding-right: 30px;
+}
+
+#menu ul {
+	list-style: none;
+}
+
+#menu li {
+	display: inline;
+}
+
+#menu a {
+	display: block;
+	float: left;
+	margin-left: 15px;
+	text-decoration: none;
+	font-size: 1.36em;
+}
+
+/* Page layout */
+
+#page {
+	margin-top: 30px;
+}
+
+#content {
+	margin-left: 260px;
+}
+
+/* Content layout */
+
+dl {
+	margin: 10px;
+	padding: 0px
+}
+
+dl dl {
+	margin-left: -150px;
+}
+
+dt {
+	float: left;
+	width: 14em;
+	font-weight: bold;
+	text-align: right;
+	padding-right: 20px;
+	line-height: 1em;
+}
+
+dd {
+	line-height:1em;
+	margin-bottom: 5px;
+	margin-left: 210px;
+}
+
+h2, h3 {
+	font-weight: normal;
+	font-size: 24px;
+}
+
+p {
+	margin: 10px;
+}
+
+input {
+	padding: 1px;
+}
+
+/* Content appearance */
+
+.entry p {
+	line-height: 1.35em;
+}
+
+
+.entry h2 {
+	margin-top: 1em;
+}
+
+/*** Colours ***/
+
+body {
+	color: #ccc;
+	background-color: #222;
+}
+
+html {
+	background-color: #444;
+}
+
+a {
+	color: #F0BC20;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #46B;
+}
+
+input, input, textarea, select{
+	color: #ddd;
+	border: 1px solid #888;
+	background-color: #181818;
+}
+
+#footer, #container {
+	border-right: 1px solid #888;
+	border-left: 1px solid #888;
+}
+
+#container {
+	background-color: #222;
+}
+
+#footer {
+	border-top: 1px solid #aaa;
+	background-color: #111;
+	color: #aaa;
+}
+
+#header {
+	border-bottom: 1px solid #aaa;
+	background-color: #111;
+	color: #ddd;
+}
+
+#menu a {
+	color: #ddd;
+}
+
+#menu a:hover, .active a {
+	border-bottom: 3px solid #ddd;
+}
+
+#sidebar {
+	background: #333 url(images/sidebg.png) repeat-y left;
+	border: 1px solid #444;
+	float: left;
+	width: 200px;
+	margin-left: 20px;
+	margin-right: 30px;
+	padding: 5px;
+	/* Horrific IE6 Hack */
+	-margin-right: 15px;
+}
+
+#sidebar li li a {
+	border-bottom: 1px dotted #bbb;
+	text-decoration: none;
+	color: #3193FF;
+}
+
+table, td, tr, th {
+	border-spacing: 0;
+	padding: 0;
+	margin: 0;
+}
+th {
+	border-bottom: 1px solid;
+	padding: 2px 10px;
+	text-align: center;
+}
+td {
+	width: auto;
+	padding: 2px 10px;
+}
+
+.post {
+	padding: 10px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	background: #222 url(images/postbg.png) repeat-x top;
+	border: 1px solid #333;
+	overflow: hidden;
+}
+
+.post .icon {
+	float: left;
+	display: block;
+}
+
+.icon img {
+	width: 292px;
+	height: 136px;
+}
+
+.post .info {
+	display: block;
+	width: 100%;
+}
+
+.post .info .text h3 {
+	border-bottom: 2px solid #484848
+}
+.post .info .text {
+	margin-left: 300px;
+}
+
