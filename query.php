@@ -9,7 +9,8 @@
 
 		$intersection = call_user_func_array(array_intersect, $user);
 
-		generateXML($intersection);
+//		generateXML($intersection);
+		generateJSON($intersection);
 	}
 
 	function getSteamProfile($name)
@@ -40,5 +41,14 @@
 			$game->addChild('id', $key);
 		}
 
-		print($out->asXML());
+		echo($out->asXML());
+	}
+
+	function generateJSON($intersection)
+	{
+		header('content-type: application/json');
+
+		$out = json_encode($intersection);
+
+		echo($out);
 	}
