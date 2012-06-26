@@ -4,10 +4,11 @@
 		$names = explode(',', $_GET['names']);
 		foreach($names as $key=>$value)
 		{
-			echo($key.'=>'.$value);
-			getSteamProfile($value);
+			$user[$value] = getSteamProfile($value);
 		}
 	}
+
+	print_r($user);
 
 	function getSteamProfile($name)
 	{
@@ -17,7 +18,8 @@
 
 		foreach($xml->games->game as $game)
 		{
-			echo($game->appID);
+			$games[(string) $game->appID] = (string)$game->name;
 		}
 
+		return $games;
 	}
