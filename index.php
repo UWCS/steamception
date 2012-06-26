@@ -35,8 +35,10 @@ getGames = function(link){
 	$.getJSON(fetchPath, function(data) {
 		console.log(data);
 		$.each(data, function(key, val){
-			linkBase = 'http://store.steampowered.com/app/'
-			$('#results').append('<div class="result"><a href="'+linkBase+key+'">'+val+'</a></div>');
+			linkBase = 'http://store.steampowered.com/app/';
+			imgBase = 'http://cdn.steampowered.com/v/gfx/apps/';
+			imgEnd = '/header_292x136.jpg';
+			$('#results').append('<div class="result"><img src="'+imgBase+key+imgEnd+'" /><a href="'+linkBase+key+'">'+val+'</a></div>');
 		});
 	});
 	return false;
