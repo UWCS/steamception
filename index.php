@@ -31,10 +31,19 @@ doAddPerson = function(){
 			people.push(value);
 
 			$('#people').append('\
-				<div class="person" person='+value+'>\
-					'+value+'<a href="#" onClick="removePerson(\''+value+'\')"><img src="images/remove.png" /></a>\
+				<div class="person" person='+value+'><a class="name">'+value+'</a>\
+				<a href="#" onClick="removePerson(\''+value+'\')"><img src="images/remove.png" /></a>\
 				</div>\
 			');
+
+			if(/[0-9]{17}/.test(value))
+			{
+				$('.person[person="'+value+'"] .name').attr('href','http://steamcommunity.com/profiles/'+value);
+			}
+			else
+			{
+				$('.person[person="'+value+'"] .name').attr('href','http://steamcommunity.com/id/'+value);
+			}
 
 			updateLink(value);
 		} else {
