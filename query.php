@@ -4,7 +4,7 @@
 		$names = explode(',', $_GET['names']);
 		foreach($names as $key=>$value)
 		{
-			$user[$value] = getSteamProfile($value);
+			$user[$value] = getSteamGames($value);
 		}
 
 		$intersection = call_user_func_array(array_intersect, $user);
@@ -13,7 +13,7 @@
 		generateJSON($intersection);
 	}
 
-	function getSteamProfile($name)
+	function getSteamGames($name)
 	{
 		$HEAD_URL = 'http://steamcommunity.com/id/';
 		$TAIL_URL = '/games?tab=all&xml=1';
