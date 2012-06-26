@@ -1,16 +1,15 @@
 <html>
-<head>
+	<head>
 
-<link rel="stylesheet" type="text/css" href="main.css" />
+		<link rel="stylesheet" type="text/css" href="main.css" />
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script> 
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script> 
 <script type="text/javascript">
 people = [];
 function updateLink(){
 	if (people.length > 1){
-		link = 'query.php?names='+people.join(',');
 		$('#compare').html('Compare!');
-		$('#compare').attr('href', link);
+		$('#compare').attr('onClick','getGames(\''+people.join(',')+'\');');
 	}
 	$('#people').html(people.join(', '));
 }
@@ -31,6 +30,18 @@ doAddPerson = function(){
 		return false;
 }
 
+getGames = function(link){
+	fetchPath = 'query.php?names='+link;
+	$.getJSON(fetchPath, function(data) {
+		console.log(data);
+		$.each(data, function(key, val){
+			linkBase = 'http://store.steampowered.com/app/'
+			$('#results').append('<div class="result"><a href="'+linkBase+key+'">'+val+'</a></div>');
+		});
+	});
+	return false;
+}
+
 $(document).ready(function()
 			{
 				$('#addbutton').click(doAddPerson);
@@ -38,21 +49,23 @@ $(document).ready(function()
 			});
 </script>
 
-</head>
-<body>
+	</head>
+	<body>
 
-<form id="addform">
-	<input id="addperson" type="text"/>
-	<a href="#" id="addbutton">
-		<img src="images/add.png">
-	</a>
-</form>
+		<form id="addform">
+			<input id="addperson" type="text"/>
+			<a href="#" id="addbutton">
+				<img src="images/add.png">
+			</a>
+		</form>
 
-<p><a href="" id="compare"></a></p>
-<div id="people">
-</div>
-<div id="errors">
-</div>
+		<p><a href="#" id="compare"></a></p>
+		<div id="people">
+		</div>
+		<div id="errors">
+		</div>
+		<div id="results">
+		</div>
 
-</body>
+	</body>
 </html>
