@@ -38,7 +38,7 @@ getGames = function(link){
 			linkBase = 'http://store.steampowered.com/app/';
 			imgBase = 'http://cdn.steampowered.com/v/gfx/apps/';
 			imgEnd = '/header_292x136.jpg';
-			$('#results').append('<div class="result"><img src="'+imgBase+key+imgEnd+'" /><a href="'+linkBase+key+'">'+val+'</a></div>');
+			$('#results').append('<div class="result"><a href="'+linkBase+key+'"><img src="'+imgBase+key+imgEnd+'" alt="'+val+'"/></a></div>');
 		});
 	});
 	return false;
