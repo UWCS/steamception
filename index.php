@@ -24,36 +24,43 @@ removePerson = function(person){
 	updateLink();
 }
 
-doAddPerson = function(){
-	value = $('#addperson').attr('value')
-	if(value){
-		if (-1 == jQuery.inArray(value, people)){
-			people.push(value);
+addPerson = function(person){
+	if(person){
+		if (-1 == jQuery.inArray(person, people)){
+			people.push(person);
 
 			$('#people').append('\
-				<div class="person" person='+value+'><a class="name">'+value+'</a>\
-				<a href="#" onClick="removePerson(\''+value+'\')"><img src="images/remove.png" /></a>\
+				<div class="person" person='+person+'><a class="name">'+person+'</a>\
+				<a href="#" onClick="removePerson(\''+person+'\')"><img src="images/remove.png" /></a>\
 				</div>\
 			');
 
-			if(/[0-9]{17}/.test(value))
+			if(/[0-9]{17}/.test(person))
 			{
-				$('.person[person="'+value+'"] .name').attr('href','http://steamcommunity.com/profiles/'+value);
+				$('.person[person="'+person+'"] .name').attr('href','http://steamcommunity.com/profiles/'+person);
 			}
 			else
 			{
-				$('.person[person="'+value+'"] .name').attr('href','http://steamcommunity.com/id/'+value);
+				$('.person[person="'+person+'"] .name').attr('href','http://steamcommunity.com/id/'+person);
 			}
 
-			updateLink(value);
+			updateLink(person);
+			return true;
 		} else {
 			$('#errors').append('Already added<br />');
 		}
 	} else {
 		$('#errors').append('Empty!<br />');
 	}
-	$('#addperson').attr('value', '')
+	return false;
+}
 
+addFromField = function(){
+	value = $('#addperson').attr('value');
+	if(addPerson(value))
+	{
+		$('#addperson').attr('value', '');
+	}
 	return false;
 }
 
@@ -61,7 +68,6 @@ getGames = function(link){
 	$('#results').html('');
 	fetchPath = 'query.php?names='+link;
 	var jqxhr = $.getJSON(fetchPath, function(data) {
-		console.log(data);
 		$.each(data, function(key, val){
 			linkBase = 'http://store.steampowered.com/app/';
 			imgBase = 'http://cdn.steampowered.com/v/gfx/apps/';
@@ -91,9 +97,19 @@ getGames = function(link){
 
 $(document).ready(function()
 			{
-				$('#addbutton').click(doAddPerson);
-				$('#addform').submit(doAddPerson);
+				$('#addbutton').click(addFromField);
+				$('#addform').submit(addFromField);
 				$('#removeperson').click(removePerson);
+<?php
+	if(isset($_GET['names']))
+	{
+		$names = explode(',', $_GET['names']);
+		foreach($names as $key=>$value)
+		{
+			echo('addPerson("'.$value.'");');
+		}
+	}
+?>
 			});
 </script>
 

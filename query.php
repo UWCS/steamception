@@ -9,8 +9,14 @@
 
 		$intersection = call_user_func_array(array_intersect, $user);
 
-//		generateXML($intersection);
-		generateJSON($intersection);
+		if(isset($_GET['xml']))
+		{
+			generateXML($intersection);
+		}
+		else
+		{
+			generateJSON($intersection);
+		}
 	}
 
 	function getSteamGames($name)
