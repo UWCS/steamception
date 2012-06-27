@@ -109,6 +109,10 @@ $(document).ready(function()
 			echo('addPerson("'.$value.'");');
 		}
 	}
+	if(isset($_GET['compare']))
+	{
+		echo('getGames(people.join(\',\'));');
+	}
 ?>
 			});
 </script>
