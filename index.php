@@ -141,6 +141,17 @@ $(document).ready(function()
 				</div>
 				<div id="content">
 					<div id="results">
+						<div class="post">
+							<div class="info">
+								<h3>
+									Steam common game finder
+								</h3>
+								Add the Steam ids or usernames of yourself and your friends to the left:<br />
+								You want the unique part of the url, for example:<br />
+								http://steamcommunity.com/id/<b>zed0h</b><br />
+								http://steamcommunity.com/profiles/<b>76561198034371475</b><br />
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -148,6 +159,8 @@ $(document).ready(function()
 			</div>
 		</div>
 		<div id="footer">
+			Created by <a href="https://github.com/cranman">Matt Cranham</a> and <a href="https://github.com/zed0">Ben Falconer</a> for the <a href="http://uwcs.co.uk">Univeristy of Warwick Computing Society</a><br />
+			<a href="https://github.com/UWCS/steamception">Source code is available.</a>
 		</div>
 	</body>
 </html>
