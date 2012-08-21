@@ -11,9 +11,23 @@ updateLink = function(){
 	if (people.length > 1){
 		$('#compare').html('Compare!');
 		$('#compare').attr('onClick','getGames(\''+people.join(',')+'\');');
+		$('#link').html('Permalink');
+		var permalink = window.location.protocol + '//' + window.location.hostname + window.location.pathname +'?names=';
+		console.log(people);
+		for(var person in people){
+			permalink += people[person];
+			if(person < people.length-1)
+			{
+				permalink += ',';
+			}
+		}
+		permalink += '&compare';
+
+		$('#link').attr('href',permalink);
 	}
 	else{
 		$('#compare').html('');
+		$('#link').html('');
 		$('#compare').attr('onClick','');
 	}
 }
@@ -122,7 +136,7 @@ $(document).ready(function()
 		<div id="container">
 			<div id="header">
 				<div id="logo">
-					<a href=""><img src="images/logo.png" alt="University of Warwick Computing Society" /></a>
+					<a href="."><img src="images/logo.png" alt="University of Warwick Computing Society" /></a>
 				</div>
 			</div>
 			<div id="page">
@@ -138,6 +152,7 @@ $(document).ready(function()
 					</div>
 					<div id="errors">
 					</div>
+					<p><a href="#" id="link"></a></p>
 				</div>
 				<div id="content">
 					<div id="results">
